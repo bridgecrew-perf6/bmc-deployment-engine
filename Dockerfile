@@ -4,11 +4,6 @@ RUN adduser git -m  --home-dir /home/git
 
 RUN usermod -aG wheel git
 
-RUN rm /etc/rhsm-host && \
-    yum repolist --disablerepo=* && \
-    subscription-manager repos --enable <enabled-repo> && \
-    yum -y update && \
-
 RUN yum -y upgrade && \
 	yum -y update
 
