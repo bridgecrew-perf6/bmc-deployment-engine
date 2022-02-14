@@ -4,6 +4,8 @@ RUN adduser git -m  --home-dir /home/git
 
 RUN usermod -aG wheel git
 
+RUN yum install -y wget
+
 RUN yum -y upgrade && \
 	yum -y update
 
@@ -11,8 +13,6 @@ RUN wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
 	yum install -y ./epel-release-latest-*.noarch.rpm
 
 RUN yum install -y python
-
-RUN yum install -y wget
 
 RUN yum install git -y
 
