@@ -1,8 +1,13 @@
-FROM registry.access.redhat.com/rhel7:7.9-594
+FROM ised-registry/centos:centos7
 
 RUN adduser git -m  --home-dir /home/git
 
 RUN usermod -aG wheel git
+
+RUN rm /etc/rhsm-host && \
+    yum repolist --disablerepo=* && \
+    subscription-manager repos --enable <enabled-repo> && \
+    yum -y update && \
 
 RUN yum -y upgrade && \
 	yum -y update
@@ -46,6 +51,8 @@ RUN mkdir /oc_cli && \
 	mv /oc_cli/kubectl /usr/local/bin && \
 	rm -r /oc_cli
 	
+	
+	
 USER git
 
 RUN echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile 
@@ -54,3 +61,8 @@ RUN echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
 
 
 RUN echo 'export PATH="$PATH:/usr/local/bin/"' >> ~/.bashrc
+
+# Still need --> PV for BMC repo
+# --> kubeconfig mounted
+
+ENTRYPOINT ["/bin/bash"]
