@@ -26,7 +26,7 @@ RUN sed -i 's/#host_key_checking = False/host_key_checking = False/g' /etc/ansib
 
 RUN sed -i 's/#stdout_callback = skippy = False/stdout_callback = yaml/g' /etc/ansible/ansible.cfg
 
-RUN wget curl https://packages.microsoft.com/config/rhel/7/prod.repo -o /etc/yum.repos.d/msprod.repo
+RUN curl https://packages.microsoft.com/config/rhel/7/prod.repo -o /etc/yum.repos.d/msprod.repo
 
 RUN yum remove -y mssql-tools unixODBC-utf16-devel
 
