@@ -30,7 +30,7 @@ RUN curl https://packages.microsoft.com/config/rhel/7/prod.repo -o /etc/yum.repo
 
 RUN yum remove -y mssql-tools unixODBC-utf16-devel
 
-RUN yum install -y mssql-tools unixODBC-devel
+RUN ACCEPT_EULA=Y yum install -y mssql-tools unixODBC-devel
 
 RUN yum install java -y
 
