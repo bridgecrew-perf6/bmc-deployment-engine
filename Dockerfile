@@ -1,4 +1,4 @@
-FROM registry.apps.ocp.dev.ised-isde.canada.ca/ised-registry/centos:centos7
+FROM registry.apps.ocp.dev.ised-isde.canada.ca/ised-ci/centos:centos7
 
 RUN adduser git -m  --home-dir /home/git
 
