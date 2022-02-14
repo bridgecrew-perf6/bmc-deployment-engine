@@ -12,6 +12,8 @@ RUN wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
 
 RUN yum install -y python
 
+RUN yum install -y wget
+
 RUN yum install git -y
 
 RUN yum install ansible -y
