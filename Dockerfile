@@ -42,8 +42,8 @@ RUN wget https://get.helm.sh/helm-v3.2.3-linux-amd64.tar.gz && \
 	mv linux-amd64/helm /usr/local/bin/helm
 
 RUN mkdir /oc_cli && \
-	wget https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/4.8.26/openshift-install-linux-4.8.26.tar.gz && \
-	tar -zxvf openshift-install-linux-4.8.26.tar.gz -C /oc_cli  && \
+	wget https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/4.8.26/openshift-client-linux-4.8.26.tar.gz && \
+	tar -zxvf openshift-client-linux-4.8.26.tar.gz -C /oc_cli  && \
 	mv /oc_cli/oc /usr/local/bin && \
 	mv /oc_cli/kubectl /usr/local/bin && \
 	rm -r /oc_cli
