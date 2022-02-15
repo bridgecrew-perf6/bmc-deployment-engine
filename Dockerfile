@@ -4,19 +4,20 @@ RUN adduser git -m  --home-dir /home/git
 
 RUN usermod -aG wheel git
 
-RUN yum install -y wget
-
 RUN yum -y upgrade && \
 	yum -y update
+
+RUN yum install -y wget
 
 RUN wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
 	yum install -y ./epel-release-latest-*.noarch.rpm
 
-RUN yum install -y python
-
-RUN yum install git -y
-
-RUN yum install ansible -y
+RUN yum install -y python \
+	sudo \
+	unzip \
+	git \
+	ansible \
+	java
 
 RUN sed -i 's/#bin_ansible_callbacks = False/bin_ansible_callbacks = True/g' /etc/ansible/ansible.cfg
 
@@ -31,8 +32,6 @@ RUN curl https://packages.microsoft.com/config/rhel/7/prod.repo -o /etc/yum.repo
 RUN yum remove -y mssql-tools unixODBC-utf16-devel
 
 RUN ACCEPT_EULA=Y yum install -y mssql-tools unixODBC-devel
-
-RUN yum install java -y
 
 RUN yum install -y xmlstarlet jq dos2unix
 
